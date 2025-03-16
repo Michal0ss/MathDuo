@@ -27,7 +27,7 @@ export const FadeUp = (delay) => {
 
 const Hero = () => {
   return (
-    <section className="bg-light overflow-hidden relative">
+    <section id="home" className="bg-light overflow-hidden relative">
       <Navbar />
       <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[650px]">
         {/* Brand Info */}

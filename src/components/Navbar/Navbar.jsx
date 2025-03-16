@@ -1,49 +1,68 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { IoMdMenu } from "react-icons/io";
 import { motion } from "framer-motion";
+import { FaDiscord } from "react-icons/fa";
 
 const NavbarMenu = [
   {
     id: 1,
     title: "Home",
-    path: "/",
+    path: "#home",
   },
   {
     id: 2,
     title: "Services",
-    link: "#",
+    path: "#services",
   },
   {
     id: 3,
     title: "About Us",
-    link: "#",
+    path: "#info",
   },
   {
     id: 4,
     title: "Our Team",
-    link: "#",
+    path: "#team",
   },
   {
     id: 5,
     title: "Contact Us",
-    link: "#",
+    path: "#contact",
   },
 ];
+
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="relative z-20">
+    <nav
+      className={`fixed top-0 left-0 w-full transition-all duration-300 ${
+        scrolled ? "bg-white/50 backdrop-blur-lg shadow-md" : "bg-white/10 backdrop-blur-md"
+      } py-4 px-8 z-50`}
+    >
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
-        className="container py-10 flex justify-between items-center"
+        className="container mx-auto flex justify-between items-center"
       >
-        {/* Logo section */}
+        {/* Logo */}
         <div>
-          <h1 className="font-bold text-2xl">The Coding Journey</h1>
+          <h1 className="font-bold text-2xl">The MathDuo</h1>
         </div>
-        {/* Menu section */}
+
+        {/* Desktop Menu */}
         <div className="hidden lg:block">
-          <ul className="flex items-center gap-3">
+          <ul className="flex items-center gap-6">
             {NavbarMenu.map((menu) => (
               <li key={menu.id}>
                 <a
@@ -55,12 +74,23 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
-            <button className="primary-btn">Sign In</button>
+            
+            {/* Przyciski */}
+            <a 
+              href="https://discord.gg/twoj-link" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-yellow-500 text-white w-32 h-10 rounded-md shadow-md hover:bg-blue-500 transition-all duration-700 flex justify-center items-center group"
+            >
+              <span className="absolute opacity-100 scale-100 group-hover:opacity-0 group-hover:scale-95 transition-all duration-700">Join us</span>
+              <FaDiscord className="opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700 text-white text-xl"/>
+            </a>
           </ul>
         </div>
-        {/* Mobile Hamburger menu section */}
+
+        {/* Mobile Menu */}
         <div className="lg:hidden">
-          <IoMdMenu className="text-4xl" />
+          <IoMdMenu className="text-4xl cursor-pointer" />
         </div>
       </motion.div>
     </nav>
