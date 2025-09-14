@@ -1,43 +1,65 @@
 import React from "react";
-import BannerPng from "../../assets/banner.png";
+// import BannerPng from "../../assets/banner.png"; // Ten obrazek nie będzie już potrzebny
 import { motion } from "framer-motion";
 
 const Banner2 = () => {
   return (
     <section>
-      <div className="container py-14 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-8 space-y-6 md:space-y-0">
-        {/* Banner Text */}
+      <div className="container py-14 md:py-24">
+        {/* Centered Heading */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          className="flex flex-col justify-center"
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center pb-10" // Dodajemy padding-bottom
         >
-          <div className="text-center md:text-left space-y-4 lg:max-w-[450px]">
-            <h1 className="text-4xl font-bold !leading-snug">
-              Join Our Community to Start your Journey
-            </h1>
-            <p className="text-dark2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Recusandae iusto minima ad ut id eos accusantium aut, aperiam quis
-              incidunt!
-            </p>
-            <a
-              href="https://chat.whatsapp.com/FQSKgJ5f1eIAhlyF5sVym0"
-              className="primary-btn !mt-8"
-            >
-              Join Now
-            </a>
-          </div>
+          <h1 className="text-4xl font-bold !leading-snug">
+            Udzielamy korepetycji stacjonarnie i online
+          </h1>
         </motion.div>
-        {/* Banner Image */}
-        <div className="flex justify-center items-center">
-          <motion.img
+
+        {/* Content: Text on left, Map on right */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* Banner Text */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col justify-center text-center md:text-left" // Tekst wyśrodkowany na mobile, na lewo na desktop
+          >
+            <div className="space-y-4 md:max-w-[450px]"> {/* Usunięto lg:max-w-[450px] bo nie jest już potrzebne */}
+              <p className="text-dark2">
+                Możemy pomóc Ci z matematyką na terenie Bytomia, Krakowa jak i zdalnie przez internet. Korzystając z naszych korepetycji, zyskujesz elastyczność i wygodę nauki w dogodnym dla Ciebie miejscu.
+              </p>
+              <a
+                href="https://chat.whatsapp.com/FQSKgJ5f1eIAhlyF5sVym0"
+                className="primary-btn !mt-8"
+              >
+                Skontaktuj się z nami
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Map Section */}
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            src={BannerPng}
-            alt=""
-            className="w-[350px] md:max-w-[450px] object-cover drop-shadow"
-          />
+            viewport={{ once: true }}
+            className="flex justify-center items-center w-full"
+          >
+            {/* Tutaj wklej kod iframe z Google Maps */}
+            {/* Przykład kodu iframe. Musisz go wygenerować z Google Maps! */}
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164104.9123049581!2d19.78913988587602!3d50.1171891963953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471644c03b573cd3%3A0x3b652875a065b683!2sKrak%C3%B3w!5e0!3m2!1spl!2spl!4v1701967268903!5m2!1spl!2spl" // TUTAJ WKLEJ SWÓJ KOD EMBED MAPY
+              width="600" // Możesz dostosować szerokość
+              height="450" // Możesz dostosować wysokość
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-[200px] md:h-[250px] rounded-full shadow-lg" // Responsywna szerokość i wysokość
+            ></iframe>
+          </motion.div>
         </div>
       </div>
     </section>

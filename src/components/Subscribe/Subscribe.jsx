@@ -27,17 +27,16 @@ const Subscribe = () => {
         >
           <div className="text-center space-y-4 lg:max-w-[430px] mx-auto">
             <h1 className="text-4xl font-bold !leading-snug">
-              450K+ Students are learning from us
+              Już +70 zadowolonych uczniów
             </h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Recusandae iusto minima
+              Zaufalo nam już wielu mlodych i ambitnych uczniów, dołącz do nich i Ty!
             </p>
             <a
               href=""
               className="primary-btn !mt-8 inline-flex items-center gap-4 group"
             >
-              Subscribe Now
+              Dolacz teraz
               <FaBell className="group-hover:animate-bounce group-hover:text-lg duration-200" />
             </a>
           </div>

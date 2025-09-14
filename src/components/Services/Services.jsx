@@ -1,51 +1,53 @@
 import React from "react";
-import { RiComputerLine } from "react-icons/ri";
-import { CiMobile3 } from "react-icons/ci";
-import { TbWorldWww } from "react-icons/tb";
-import { IoMdHappy } from "react-icons/io";
 import { BiSupport } from "react-icons/bi";
 import { IoPulseOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 
+import GroupClass from "../../assets/groupclass.svg"; 
+import Exam from "../../assets/osma.svg"; 
+import MaturaP from "../../assets/maturap.svg"; 
+import MaturaR from "../../assets/maturar.svg";
+
+
 const ServicesData = [
   {
     id: 1,
-    title: "Web Development",
+    title: "Przygotowanie do egzaminu ósmoklasisty",
     link: "#",
-    icon: <TbWorldWww />,
+    icon: <img src={Exam} alt="osmoklasista" className="w-10 h-10" />,
     delay: 0.2,
   },
   {
     id: 2,
-    title: "Mobile development",
+    title: "Przygotowanie do matury podstawowej",
     link: "#",
-    icon: <CiMobile3 />,
+    icon: <img src={MaturaP} alt="maturap" className="w-10 h-10" />,
     delay: 0.3,
   },
   {
     id: 3,
-    title: "Software development",
+    title: "Przygotowanie do matury rozszerzonej",
     link: "#",
-    icon: <RiComputerLine />,
+    icon: <img src={MaturaR} alt="maturar" className="w-10 h-10" />,
     delay: 0.4,
   },
   {
     id: 4,
-    title: "Satisfied clients",
+    title: "Korepetycje grupowe",
     link: "#",
-    icon: <IoMdHappy />,
+    icon: <img src={GroupClass} alt="grupowe" className="w-10 h-10" />,
     delay: 0.5,
   },
   {
     id: 5,
-    title: "SEO optimization",
+    title: "Przygotowanie do sprawdzianów",
     link: "#",
     icon: <IoPulseOutline />,
     delay: 0.6,
   },
   {
     id: 6,
-    title: "24/7 support",
+    title: "Wsparcie online i stacjonarnie",
     link: "#",
     icon: <BiSupport />,
     delay: 0.7,
@@ -74,7 +76,7 @@ const Services = () => {
     <section id="services" className="bg-white">
       <div className="container pb-14 pt-16">
         <h1 className="text-4xl font-bold text-left pb-10">
-          Services we provide
+          Nasze Usługi
         </h1>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8">
           {ServicesData.map((service) => (

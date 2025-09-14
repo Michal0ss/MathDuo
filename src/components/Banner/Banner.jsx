@@ -1,5 +1,5 @@
 import React from "react";
-import BannerPng from "../../assets/education.png";
+import BannerPng from "../../assets/grafika_no_bg.png";
 import { GrUserExpert } from "react-icons/gr";
 import { MdOutlineAccessTime } from "react-icons/md";
 import { FaBookReader } from "react-icons/fa";
@@ -32,7 +32,7 @@ const Banner = () => {
               transition={{ duration: 0.5 }}
               className="text-3xl md:text-4xl font-bold !leading-snug"
             >
-              The World's Leading Online learning Platform
+              Pomagamy zrozumieć matematykę krok po kroku
             </motion.h1>
             <div className="flex flex-col gap-6">
               <motion.div
@@ -43,7 +43,7 @@ const Banner = () => {
                 className="flex items-center gap-4 p-6 bg-[#f4f4f4] rounded-2xl hover:bg-white duration-300 hover:shadow-2xl"
               >
                 <FaBookReader className="text-2xl" />
-                <p className="text-lg">10,000+ Courses</p>
+                <p className="text-lg">Korepetycje prywatne lub grupowe z doświadczonymi korepetytorami</p>
               </motion.div>
               <motion.div
                 variants={FadeUp(0.4)}
@@ -53,7 +53,7 @@ const Banner = () => {
                 className="flex items-center gap-4 p-6 bg-[#f4f4f4] rounded-2xl hover:bg-white duration-300 hover:shadow-2xl"
               >
                 <GrUserExpert className="text-2xl" />
-                <p className="text-lg">Expert Instruction</p>
+                <p className="text-lg">Nauka dopasowana do Twojego tempa</p>
               </motion.div>
               <motion.div
                 variants={FadeUp(0.6)}
@@ -63,7 +63,7 @@ const Banner = () => {
                 className="flex items-center gap-4 p-6 bg-[#f4f4f4] rounded-2xl hover:bg-white duration-300 hover:shadow-2xl"
               >
                 <MdOutlineAccessTime className="text-2xl" />
-                <p className="text-lg">Lifetime Access</p>
+                <p className="text-lg">Dopasowanie terminu pod ucznia</p>
               </motion.div>
             </div>
           </div>

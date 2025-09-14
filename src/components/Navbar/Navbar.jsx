@@ -7,27 +7,27 @@ import { FaDiscord } from "react-icons/fa";
 const NavbarMenu = [
   {
     id: 1,
-    title: "Home",
+    title: "Zacznij tutaj",
     path: "#home",
   },
   {
     id: 2,
-    title: "Services",
+    title: "Usługi",
     path: "#services",
   },
   {
     id: 3,
-    title: "About Us",
+    title: "O nas",
     path: "#info",
   },
   {
     id: 4,
-    title: "Our Team",
+    title: "Nasi uczniowie",
     path: "#team",
   },
   {
     id: 5,
-    title: "Contact Us",
+    title: "Kontakt",
     path: "#contact",
   },
 ];
@@ -80,9 +80,9 @@ const Navbar = () => {
               href="https://discord.gg/twoj-link" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-yellow-500 text-white w-32 h-10 rounded-md shadow-md hover:bg-blue-500 transition-all duration-700 flex justify-center items-center group"
+              className="bg-blue-500 text-white w-32 h-10 rounded-md shadow-md hover:bg-purple-500 transition-all duration-700 flex justify-center items-center group"
             >
-              <span className="absolute opacity-100 scale-100 group-hover:opacity-0 group-hover:scale-95 transition-all duration-700">Join us</span>
+              <span className="absolute opacity-100 scale-100 group-hover:opacity-0 group-hover:scale-95 transition-all duration-700">Dołącz</span>
               <FaDiscord className="opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700 text-white text-xl"/>
             </a>
           </ul>
