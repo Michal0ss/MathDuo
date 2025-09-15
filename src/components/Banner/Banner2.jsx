@@ -10,8 +10,15 @@ const Banner2 = () => {
     type: null // 'instagram', 'facebook' lub 'contact'
   });
 
-  const openModal = (type) => setSocialModal({ isOpen: true, type });
-  const closeModal = () => setSocialModal({ isOpen: false, type: null });
+  const openModal = (type) => {
+    setSocialModal({ isOpen: true, type });
+    document.body.classList.add('overflow-hidden'); // blokuje scroll
+  };
+
+  const closeModal = () => {
+    setSocialModal({ isOpen: false, type: null });
+    document.body.classList.remove('overflow-hidden'); // odblokowuje scroll
+  };
 
   const teachers = {
     instagram: [
