@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 const Banner = () => {
   return (
     <section>
-      <div id = "info" className="container py-14 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-8 space-y-6 md:space-y-0">
+      <div id = "info" className="container py-1 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 space-y-2 md:space-y-0">
         {/* Banner Image */}
         <div className="flex justify-center items-center">
           <motion.img
@@ -19,12 +19,12 @@ const Banner = () => {
             transition={{ duration: 0.5, ease: "easeInOut" }}
             src={BannerPng}
             alt=""
-            className="w-[350px] md:max-w-[450px] object-cover drop-shadow"
+            className="w-[300px] md:max-w-[450px] object-cover drop-shadow"
           />
         </div>
         {/* Banner Text */}
         <div className="flex flex-col justify-center">
-          <div className="text-center md:text-left space-y-12">
+          <div className="text-center md:text-left space-y-8 md:space-y-12">
             <motion.h1
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}

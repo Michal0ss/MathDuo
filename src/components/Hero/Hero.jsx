@@ -59,19 +59,19 @@ const Hero = () => {
         {/* Hero Image */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-12">
           <motion.img
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: "easeInOut" }}
-            src={HeroJpgC}
-            alt="Cichy"
-            className="w-[250px] h-[250px] object-cover rounded-3xl drop-shadow z-20"
-          />
-          <motion.img
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5, ease: "easeInOut" }}
             src={HeroJpgM}
             alt="Michał"
+            className="w-[250px] h-[250px] object-cover rounded-3xl drop-shadow z-20"
+          />
+          <motion.img
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeInOut" }}
+            src={HeroJpgC}
+            alt="Cichy"
             className="w-[250px] h-[250px] object-cover rounded-3xl drop-shadow z-20"
           />
           {/* Blob background */}
@@ -81,7 +81,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2, ease: "easeInOut" }}
             src={Blob}
             alt=""
-            className="absolute -bottom-32 w-[800px] md:w-[1500px] z-[1] hidden md:block"
+            className="absolute -bottom-32 w-[800px] md:w-[1500px] z-[1] hidden md:block "
           />
         </div>
       </div>
