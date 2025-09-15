@@ -15,6 +15,18 @@
   }
 }
 
+/* Domyślnie ukryj numer telefonu w elemencie z klasą .phone-number */
+.phone-number {
+  display: none;
+}
+
+/* Pokaż numer telefonu na ekranach większych niż 768px (dla tabletów i komputerów) */
+@media (min-width: 768px) {
+  .phone-number {
+    display: inline; /* lub display: block, jeśli chcesz, żeby był w osobnym wierszu */
+  }
+}
+
 /*change eventually*/
 html {
   scroll-behavior: smooth;
