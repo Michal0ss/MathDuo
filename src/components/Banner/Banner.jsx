@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 const Banner = () => {
   return (
     <section>
-      <div id = "info" className="container py-1 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 space-y-2 md:space-y-0">
+      <div id = "info" className="container py-1 md:py-24 pb-12 md:pb-20 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 space-y-2 md:space-y-0">
         {/* Banner Image */}
         <div className="flex justify-center items-center">
           <motion.img

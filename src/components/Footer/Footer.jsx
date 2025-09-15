@@ -14,12 +14,9 @@ const Footer = () => {
         <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-4">
           {/* first section */}
           <div className="space-y-4 max-w-[300px]">
-            <h1 className="text-2xl font-bold">The Coding Journey</h1>
+            <h1 className="text-2xl font-bold">The MathDuo</h1>
             <p className="text-dark2">
-              TCJ is a platform dedicated to empowering aspiring developers.
-              From beginner tutorials to advanced programming concepts, we
-              provide a comprehensive learning experience designed to help you
-              master coding skills, build projects, and launch your tech career.
+              Pomagamy uczniom zrozumieć matematykę krok po kroku. Oferujemy indywidualne i grupowe korepetycje, dostosowane do tempa nauki każdego ucznia. Naszym celem jest nie tylko nauka wzorów i zadań, ale też budowanie pewności siebie i pasji do matematyki.
             </p>
           </div>
           {/* second section */}
