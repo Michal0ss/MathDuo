@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaBell } from "react-icons/fa";
 import BgImage from "../../assets/bg.png"; // obraz na desktop
-import BgImageMobile from "../../assets/bg-mobile.png"; // DODAJ: obraz na telefon
+import BgImageMobile from "../../assets/bgmobile2.png"; // DODAJ: obraz na telefon
 import { motion } from "framer-motion";
 
 const Subscribe = () => {
