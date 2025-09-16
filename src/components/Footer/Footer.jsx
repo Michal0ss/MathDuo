@@ -76,17 +76,17 @@ const Footer = () => {
             </div>
             {/* social icons */}
             <div className="flex space-x-6 py-3">
-              <a href="https://www.instagram.com/the.coding.journey/">
-                <FaInstagram className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
+              <a href="https://www.instagram.com/the_math_duo/">
+                <FaInstagram className="text-3xl cursor-pointer hover:text-primary hover:scale-105 duration-200" />
               </a>
-              {/* <a href="https://thecodingjourney.com/">
+              {/* <a href="https:///">
                 <TbWorldWww className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
               </a> */}
-              <a href="https://www.youtube.com/@TheCodingJourney">
-                <FaFacebook className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
+              <a href="https://www.youtube.com/@the_math_duo">
+                <FaFacebook className="text-3xl cursor-pointer hover:text-primary hover:scale-105 duration-200" />
               </a>
-			  <a href="https://www.youtube.com/@TheCodingJourney">
-                <FaDiscord className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
+			  <a href="https://discord.gg/n7tjkGhjDZ">
+                <FaDiscord className="text-3xl cursor-pointer hover:text-primary hover:scale-105 duration-200" />
               </a>
             </div>
           </div>
