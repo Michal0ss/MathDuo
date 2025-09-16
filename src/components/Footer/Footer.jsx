@@ -2,6 +2,7 @@ import React from "react";
 import { FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { TbWorldWww } from "react-icons/tb";
 import { motion } from "framer-motion";
+import { FaDiscord, FaFacebook } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -78,11 +79,14 @@ const Footer = () => {
               <a href="https://www.instagram.com/the.coding.journey/">
                 <FaInstagram className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
               </a>
-              <a href="https://thecodingjourney.com/">
+              {/* <a href="https://thecodingjourney.com/">
                 <TbWorldWww className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
-              </a>
+              </a> */}
               <a href="https://www.youtube.com/@TheCodingJourney">
-                <FaYoutube className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
+                <FaFacebook className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
+              </a>
+			  <a href="https://www.youtube.com/@TheCodingJourney">
+                <FaDiscord className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
               </a>
             </div>
           </div>

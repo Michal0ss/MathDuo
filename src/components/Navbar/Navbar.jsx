@@ -56,7 +56,7 @@ const Navbar = () => {
 
 					{/* Discord Button */}
 					<a
-						href="https://discord.gg/twoj-link"
+						href="https://discord.gg/n7tjkGhjDZ"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="bg-blue-500 text-white w-32 h-10 rounded-md shadow-md hover:bg-purple-500 transition-all duration-700 flex justify-center items-center group"
@@ -105,7 +105,7 @@ const Navbar = () => {
 
 					{/* Discord Button */}
 					<a
-						href="https://discord.gg/twoj-link"
+						href="https://discord.gg/n7tjkGhjDZ"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="w-64 py-4 px-6 bg-blue-500 text-white rounded-xl shadow-md hover:bg-purple-500 text-2xl font-semibold flex justify-center items-center transition-all duration-300"
