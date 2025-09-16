@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
 import { FaDiscord } from "react-icons/fa";
+import logo from "../../assets/logo.png";
+
 
 const NavbarMenu = [
 	{ id: 1, title: "Zacznij tutaj", path: "#home" },
@@ -37,10 +39,10 @@ const Navbar = () => {
 				className="container mx-auto flex justify-between items-center"
 			>
 				{/* Logo */}
-				<div>
-					<h1 className="font-bold text-2xl">The MathDuo</h1>
+				<div className="flex items-center gap-3">
+					<img src={logo} alt="MathDuo Logo" className="w-16 md:w-16 object-contain" />
+				    <h1 className="font-bold text-2xl">The MathDuo</h1>
 				</div>
-
 				{/* Desktop Menu */}
 				<div className="hidden lg:flex items-center gap-6">
 					{NavbarMenu.map((menu) => (

@@ -55,7 +55,7 @@ const Footer = () => {
                     michal.bialas.pol@gmail.com
                   </li>
                   <li className="cursor-pointer hover:text-secondary duration-200">
-                    themathduo@gmail.com
+                    theMathDuo2@gmail.com
                   </li>
                 </ul>
               </div>
