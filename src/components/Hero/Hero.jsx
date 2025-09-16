@@ -182,10 +182,11 @@ const Hero = () => {
                 startAccessor="start"
                 endAccessor="end"
                 style={{ height: "100%" }}
-                views={["week", "day", "agenda"]}
+                views={["month","week", "day", "agenda"]}
                 defaultView="week"
                 step={30}
                 messages={{
+                  month: "Miesiąc",
                   week: "Tydzień",
                   day: "Dzień",
                   agenda: "Lista",
