@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Blob from "../../assets/blob.svg";
@@ -9,6 +9,9 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import { format, parse, startOfWeek, getDay } from "date-fns";
 import { pl } from "date-fns/locale";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+
+// Import danych z pliku JSON
+import eventsData from '../../data/events.json';
 
 // Animacja FadeUp
 export const FadeUp = (delay) => {
@@ -43,25 +46,40 @@ const localizer = dateFnsLocalizer({
 
 const Hero = () => {
   const [showCalendar, setShowCalendar] = useState(false);
+  const [events, setEvents] = useState([]);
 
-  // PRZYKŁADOWE TERMINY
-  const events = [
-    {
-      title: "Dostępny termin",
-      start: new Date(2025, 8, 18, 16, 0),
-      end: new Date(2025, 8, 18, 18, 0),
-    },
-    {
-      title: "Dostępny termin",
-      start: new Date(2025, 8, 18, 18, 30),
-      end: new Date(2025, 8, 18, 20, 30),
-    },
-    {
-      title: "Dostępny termin",
-      start: new Date(2025, 8, 19, 15, 0),
-      end: new Date(2025, 8, 19, 16, 30),
-    },
-  ];
+  // Konwersja danych z JSONa na obiekty Date
+  useEffect(() => {
+    const formattedEvents = eventsData.events.map(event => ({
+      ...event,
+      start: new Date(event.start),
+      end: new Date(event.end)
+    }));
+    setEvents(formattedEvents);
+  }, []);
+
+  // Blokada scrollowania gdy modal jest otwarty
+  useEffect(() => {
+    if (showCalendar) {
+      // Zapisz aktualną pozycję scrolla
+      const scrollY = window.scrollY;
+      
+      // Zablokuj scrollowanie
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        // Przywróć scrollowanie po zamknięciu modala
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [showCalendar]);
 
   const handleSelectEvent = (event) => {
     alert(
@@ -147,10 +165,10 @@ const Hero = () => {
           ></div>
 
           {/* Kalendarz w okienku */}
-          <div className="relative bg-white p-6 rounded-2xl shadow-2xl w-[90%] max-w-[900px]">
+          <div className="relative bg-white p-6 rounded-2xl shadow-2xl w-[90%] max-w-[900px] max-h-[90vh] overflow-hidden">
             <button
               onClick={() => setShowCalendar(false)}
-              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl"
+              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl z-10 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md"
             >
               ✕
             </button>

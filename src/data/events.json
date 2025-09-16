@@ -1,0 +1,29 @@
+{
+  "events": [
+    {
+      "title": "Dostępny termin",
+      "start": "2025-09-18T16:00:00",
+      "end": "2025-09-18T18:00:00"
+    },
+    {
+  "title": "Dostępny termin",
+  "start": "2025-09-18T16:00:00", 
+  "end": "2025-09-18T18:00:00"
+    },
+    {
+      "title": "Dostępny termin",
+      "start": "2025-09-19T15:00:00",
+      "end": "2025-09-19T16:30:00"
+    },
+    {
+      "title": "Konsultacje matematyczne",
+      "start": "2025-09-20T10:00:00",
+      "end": "2025-09-20T12:00:00"
+    },
+    {
+      "title": "Warsztaty z geometrii",
+      "start": "2025-09-21T14:00:00",
+      "end": "2025-09-21T16:00:00"
+    }
+  ]
+}
