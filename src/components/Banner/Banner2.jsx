@@ -115,8 +115,8 @@ const Banner2 = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex flex-col justify-center text-center md:text-left">
             <div className="space-y-4 md:max-w-[450px]">
-              <p className="text-dark2">
-                Możemy pomóc Ci z matematyką na terenie Bytomia, Krakowa jak i zdalnie przez internet. Korzystając z naszych korepetycji, zyskujesz elastyczność i wygodę nauki w dogodnym dla Ciebie miejscu.
+              <p className="text-dark2 font-bold">
+                Możemy pomóc Ci z matematyką zdalnie przez internet jak i zarówno na terenie Krakowa (Krowodrza, Łobzów i okolice Błoni), Radzionkowa i okolic. Korzystając z naszych korepetycji, zyskujesz elastyczność i wygodę nauki w dogodnym dla Ciebie miejscu.
               </p>
 
 
@@ -141,14 +141,14 @@ const Banner2 = () => {
           {/* MAPY */}
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164104.9123049581!2d19.78913988587602!3d50.1171891963953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471644c03b573cd3%3A0x3b652875a065b683!2sKrak%C3%B3w!5e0!3m2!1spl!2spl!4v1701967268903!5m2!1spl!2spl"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5122.350502272018!2d19.911434!3d50.069225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b1b8b7b8b8b%3A0x8b7b8b7b8b7b8b8b!2sKrowodrza%2C%20Krak%C3%B3w!5e0!3m2!1spl!2spl!4v1727100000000!5m2!1spl!2spl"
               className="w-full h-[200px] md:h-[250px] rounded-lg shadow-lg"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
             ></iframe>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d163975.6340515184!2d18.759316369863!3d50.34639930100055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4711313817c5f3a9%3A0x5c803513b9c8d5e5!2sBytom%2C%20Polska!5e0!3m2!1spl!2spl!4v1701967268903!5m2!1spl!2spl"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d16308.354171255!2d18.901258!3d50.392268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1727100000000!5m2!1spl!2spl"
               className="w-full h-[200px] md:h-[250px] rounded-lg shadow-lg"
               style={{ border: 0 }}
               allowFullScreen

@@ -35,7 +35,7 @@ export const FadeUp = (delay) => {
 };
 
 // Lokalizacja kalendarza PL
-const locales = { pl: pl };
+const locales = {pl: pl };
 const localizer = dateFnsLocalizer({
   format,
   parse,
@@ -47,6 +47,7 @@ const localizer = dateFnsLocalizer({
 const Hero = () => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   // Konwersja danych z JSONa na obiekty Date
   useEffect(() => {
@@ -82,12 +83,15 @@ const Hero = () => {
   }, [showCalendar]);
 
   const handleSelectEvent = (event) => {
-    alert(
-      `Wybrałeś termin: ${format(event.start, "dd.MM.yyyy HH:mm")} - ${format(
-        event.end,
-        "HH:mm"
-      )}`
-    );
+    setSelectedEvent(event);
+  };
+
+  const handleCall = (phoneNumber) => {
+    window.location.href = `tel:${phoneNumber}`;
+  };
+
+  const closeModal = () => {
+    setSelectedEvent(null);
   };
 
   return (
@@ -108,6 +112,7 @@ const Hero = () => {
               <span className="text-secondary">Matematyka</span> staje się prosta!
             </motion.h1>
 
+
             {/* Przycisk otwierający modal */}
             <motion.div
               variants={FadeUp(0.8)}
@@ -119,12 +124,14 @@ const Hero = () => {
                 onClick={() => setShowCalendar(true)}
                 className="primary-btn flex items-center gap-2 group"
               >
-                zacznij teraz
+                Umów się na korepetycje
                 <IoIosArrowRoundForward className="text-xl group-hover:translate-x-2 group-hover:-rotate-45 duration-300" />
               </button>
             </motion.div>
           </div>
         </div>
+
+
 
         {/* Prawa strona */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-12">
@@ -161,7 +168,7 @@ const Hero = () => {
           {/* Rozmazane tło */}
           <div
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-            onClick={() => setShowCalendar(false)} // zamykanie po kliknięciu w tło
+            onClick={() => setShowCalendar(false)}
           ></div>
 
           {/* Kalendarz w okienku */}
@@ -177,13 +184,15 @@ const Hero = () => {
             </h2>
             <div className="w-full h-[600px]">
               <Calendar
+                culture="pl"
                 localizer={localizer}
                 events={events}
                 startAccessor="start"
                 endAccessor="end"
                 style={{ height: "100%" }}
-                views={["month","week", "day", "agenda"]}
-                defaultView="week"
+                views={window.innerWidth < 768 ? ["month", "day", "agenda"] : ["month","week", "day", "agenda"]}
+                defaultView={window.innerWidth < 768 ? "agenda" : "week"}
+                min = {new Date(2025, 0, 1, 7, 0)} // 1 Wrzesień 2025, 08:00
                 step={30}
                 messages={{
                   month: "Miesiąc",
@@ -195,9 +204,71 @@ const Hero = () => {
                   next: "Następny",
                   noEventsInRange: "Brak dostępnych terminów w tym zakresie",
                 }}
+                formats={{
+                  timeGutterFormat: (date) => format(date, "HH:mm", { locale: pl }),
+                  eventTimeRangeFormat: ({ start, end }) => 
+                    `${format(start, "HH:mm", { locale: pl })} - ${format(end, "HH:mm", { locale: pl })}`,
+                  agendaTimeFormat: (date) => format(date, "HH:mm", { locale: pl }),
+                  agendaHeaderFormat: ({ start, end }) => 
+                    `${format(start, "dd.MM.yyyy", { locale: pl })} - ${format(end, "dd.MM.yyyy", { locale: pl })}`,
+                  dayHeaderFormat: (date) => format(date, "EEEE, dd.MM.yyyy", { locale: pl }),
+                  dayRangeHeaderFormat: ({ start, end }) => 
+                    `${format(start, "dd.MM.yyyy", { locale: pl })} - ${format(end, "dd.MM.yyyy", { locale: pl })}`,
+                  monthHeaderFormat: (date) => format(date, "LLLL yyyy", { locale: pl }),
+                  weekdayFormat: (date) => format(date, "EEEEEE", { locale: pl }),
+                  
+                  
+                }}
                 onSelectEvent={handleSelectEvent}
+                eventPropGetter={() => ({
+                  style: {
+                    backgroundColor: '#4f46e5',
+                    borderRadius: '5px',
+                    border: 'none',
+                    color: 'white',
+                  },
+                })}
               />
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal z potwierdzeniem dzwonienia */}
+      {selectedEvent && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={closeModal}
+          ></div>
+
+          <div className="relative bg-white p-6 rounded-2xl shadow-2xl w-[90%] max-w-md">
+            <button
+              onClick={closeModal}
+              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl"
+            >
+              ✕
+            </button>
+            
+            <h2 className="text-2xl font-bold mb-2">{selectedEvent.title}</h2>
+            <p className="text-gray-600 mb-4">
+              {format(selectedEvent.start, "dd.MM.yyyy HH:mm")} - {format(selectedEvent.end, "HH:mm")}
+            </p>
+            
+            {selectedEvent.number && (
+              <div className="mt-6">
+                <p className="text-sm text-gray-500 mb-2">Zadzwoń aby zarezerwować termin:</p>
+                <button
+                  onClick={() => handleCall(selectedEvent.number)}
+                  className="w-full bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                  </svg>
+                  Zadzwoń: {selectedEvent.number}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}
