@@ -12,8 +12,8 @@ const App = () => {
       <Hero />
       <Services />
       <Banner />
-      <Banner2 />
       <Subscribe />
+      <Banner2 />
       <Footer />
     </main>
   );
