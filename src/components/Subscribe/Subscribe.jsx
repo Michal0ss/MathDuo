@@ -36,7 +36,7 @@ const Subscribe = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         style={bgStyle}
-        className="w-full py-24 md:py-48 relative"
+        className="w-full py-24 md:py-48 relative rounded-3xl shadow-2xl"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
