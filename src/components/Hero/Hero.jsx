@@ -338,10 +338,10 @@ const Hero = () => {
               
               <p className="text-gray-700">
                 Cześć, jestem Michał i studiuję 2 rok informatyki na AGH.<br></br>
-                Pasjonuje się matematyką i marketingiem w it.<br></br>
-                Od trzech lat prowadzę korepetycje na poziomie rozszerzonym.<br></br> 
-                Specjalizuję się w przygotowaniu uczniów do matury i egzaminu ósmoklasisty.<br></br>
-                Sam, podchodząc do matury rozszerzonej z matematyki i rozpoczynając naukę od zera samemu, uzyskałem bardzo wysokie wyniki.<br></br>
+                Pasjonuje się matematyką i marketingiem w it.
+                Od trzech lat prowadzę korepetycje na poziomie rozszerzonym.
+                Specjalizuję się w przygotowaniu uczniów do matury i egzaminu ósmoklasisty.
+                Sam, podchodząc do matury rozszerzonej z matematyki i rozpoczynając naukę od zera samemu, uzyskałem bardzo wysokie wyniki.
                 Dostrzegając potencjał w samodzielnej nauce w tak krótkim czasie, postanowiłem poszerzać swoją wiedzę w tym zakresie i pomóc również innym.
               </p>
               
