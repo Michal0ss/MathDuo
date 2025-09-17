@@ -27,7 +27,7 @@ const Subscribe = () => {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    backgroundAttachment: "fixed",
+    // backgroundAttachment: "fixed",
   };
 
   return (
