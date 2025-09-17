@@ -48,6 +48,14 @@ const Hero = () => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [showAboutM, setShowAboutM] = useState(false); // Modal o Michale
+  const [showAboutC, setShowAboutC] = useState(false); // Modal o Cichym
+  const [isMounted, setIsMounted] = useState(false); // Nowy stan do kontroli animacji
+
+  // Ustawienie stanu po zamontowaniu komponentu
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Konwersja danych z JSONa na obiekty Date
   useEffect(() => {
@@ -61,7 +69,7 @@ const Hero = () => {
 
   // Blokada scrollowania gdy modal jest otwarty
   useEffect(() => {
-    if (showCalendar) {
+    if (showCalendar || showAboutM || showAboutC) {
       // Zapisz aktualną pozycję scrolla
       const scrollY = window.scrollY;
       
@@ -80,7 +88,7 @@ const Hero = () => {
         window.scrollTo(0, scrollY);
       };
     }
-  }, [showCalendar]);
+  }, [showCalendar, showAboutM, showAboutC]);
 
   const handleSelectEvent = (event) => {
     setSelectedEvent(event);
@@ -92,6 +100,8 @@ const Hero = () => {
 
   const closeModal = () => {
     setSelectedEvent(null);
+    setShowAboutM(false);
+    setShowAboutC(false);
   };
 
   return (
@@ -112,7 +122,6 @@ const Hero = () => {
               <span className="text-secondary">Matematyka</span> staje się prosta!
             </motion.h1>
 
-
             {/* Przycisk otwierający modal */}
             <motion.div
               variants={FadeUp(0.8)}
@@ -131,26 +140,54 @@ const Hero = () => {
           </div>
         </div>
 
-
-
         {/* Prawa strona */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-12">
-          <motion.img
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: "easeInOut" }}
-            src={HeroJpgM}
-            alt="Michał"
-            className="w-[250px] h-[250px] object-cover rounded-3xl drop-shadow z-20"
-          />
-          <motion.img
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: "easeInOut" }}
-            src={HeroJpgC}
-            alt="Cichy"
-            className="w-[250px] h-[250px] object-cover rounded-3xl drop-shadow z-20"
-          />
+          <div className="flex flex-col items-center z-20">
+            <motion.img
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: "easeInOut" }}
+              src={HeroJpgM}
+              alt="Michał"
+              className="w-[250px] h-[250px] object-cover rounded-3xl drop-shadow z-20"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7, ease: "easeInOut" }}
+            >
+              <button
+                onClick={() => setShowAboutM(true)}
+                className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+              >
+                O mnie
+              </button>
+            </motion.div>
+          </div>
+          
+          <div className="flex flex-col items-center z-20">
+            <motion.img
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6, ease: "easeInOut" }}
+              src={HeroJpgC}
+              alt="Cichy"
+              className="w-[250px] h-[250px] object-cover rounded-3xl drop-shadow z-20"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8, ease: "easeInOut" }}
+            >
+              <button
+                onClick={() => setShowAboutC(true)}
+                className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+              >
+                O mnie
+              </button>
+            </motion.div>
+          </div>
+          
           <motion.img
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -162,6 +199,7 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Reszta kodu z modalami pozostaje bez zmian */}
       {/* Modal z kalendarzem */}
       {showCalendar && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -204,6 +242,8 @@ const Hero = () => {
                   next: "Następny",
                   noEventsInRange: "Brak dostępnych terminów w tym zakresie",
                 }}
+
+                // formaty do kalendarza jesli chodzi o jezyk polski
                 formats={{
                   timeGutterFormat: (date) => format(date, "HH:mm", { locale: pl }),
                   eventTimeRangeFormat: ({ start, end }) => 
@@ -216,8 +256,6 @@ const Hero = () => {
                     `${format(start, "dd.MM.yyyy", { locale: pl })} - ${format(end, "dd.MM.yyyy", { locale: pl })}`,
                   monthHeaderFormat: (date) => format(date, "LLLL yyyy", { locale: pl }),
                   weekdayFormat: (date) => format(date, "EEEEEE", { locale: pl }),
-                  
-                  
                 }}
                 onSelectEvent={handleSelectEvent}
                 eventPropGetter={() => ({
@@ -269,6 +307,110 @@ const Hero = () => {
                 </button>
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Modal o Michale */}
+      {showAboutM && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={closeModal}
+          ></div>
+
+          <div className="relative bg-white p-6 rounded-2xl shadow-2xl w-[90%] max-w-md max-h-[80vh] overflow-y-auto">
+            <button
+              onClick={closeModal}
+              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl"
+            >
+              ✕
+            </button>
+            
+            <h2 className="text-2xl font-bold mb-4 text-center">O Michale</h2>
+            
+            <div className="space-y-4">
+              <img
+                src={HeroJpgM}
+                alt="Michał"
+                className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+              />
+              
+              <p className="text-gray-700">
+                Cześć, jestem Michał i studiuję 2 rok informatyki na AGH.<br></br>
+                Pasjonuje się matematyką i marketingiem w it.<br></br>
+                Od trzech lat prowadzę korepetycje na poziomie rozszerzonym.<br></br> 
+                Specjalizuję się w przygotowaniu uczniów do matury i egzaminu ósmoklasisty.<br></br>
+                Sam, podchodząc do matury rozszerzonej z matematyki i rozpoczynając naukę od zera samemu, uzyskałem bardzo wysokie wyniki.<br></br>
+                Dostrzegając potencjał w samodzielnej nauce w tak krótkim czasie, postanowiłem poszerzać swoją wiedzę w tym zakresie i pomóc również innym.
+              </p>
+              
+              <h3 className="text-lg font-semibold mt-6">Specjalizacje:</h3>
+              <ul className="list-disc list-inside text-gray-700 ml-4">
+                <li>Grupowe zajęcia przygotowujące do matury i e8</li>
+                <li>Przygotowanie do matury rozszerzonej</li>
+                <li>Przygotowanie do matury podstawowej</li>
+                <li>Przygotowanie do egzaminu ósmoklasisty</li>
+                <li>Przygotowanie do sprawdzianów i kartkówek</li>
+              </ul>
+              
+              <h3 className="text-lg font-semibold mt-6">Osiągnięcia:</h3>
+              <ul className="list-disc list-inside text-gray-700 ml-4">
+                <li>100% z matury podstawowej</li>
+                <li>84% z matury rozszerzonej</li>
+                <li>100% zdawalności matur u swoich uczniów</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal o Cichym */}
+      {showAboutC && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={closeModal}
+          ></div>
+
+          <div className="relative bg-white p-6 rounded-2xl shadow-2xl w-[90%] max-w-md max-h-[80vh] overflow-y-auto">
+            <button
+              onClick={closeModal}
+              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl"
+            >
+              ✕
+            </button>
+            
+            <h2 className="text-2xl font-bold mb-4 text-center">O Cichym</h2>
+            
+            <div className="space-y-4">
+              <img
+                src={HeroJpgC}
+                alt="Cichy"
+                className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+              />
+
+              <p className="text-gray-700">
+                Jestem kreatywnym miłośnikiem matematyki i kosmosu. Od dziecka brałem udział w wielu konkursach matematycznych, a moja matura poszła bardzo dobrze – podstawa 100%, rozszerzenie w 95. centylu. Lubię wyzwania i zawsze szukam nietypowych, logicznych rozwiązań problemów. Mam ścisły umysł i pasję do nauczania, dzięki czemu potrafię w ciekawy i przystępny sposób tłumaczyć materiał szkolny uczniom. Obecnie studiuję Informatykę na wydziale Matematyki Stosowanej Politechniki Śląskiej.
+                <a href="https://dcmath.pl/" target="_blank"> dcmath.pl</a>
+              </p>
+
+              <h3 className="text-lg font-semibold mt-6">Specjalizacje:</h3>
+              <ul className="list-disc list-inside text-gray-700 ml-4">
+                <li>Grupowe zajęcia przygotowujące do matury i e8</li>
+                <li>Przygotowanie do matury podstawowej</li>
+                <li>Przygotowanie do matury rozszerzonej</li> 
+                <li>Przygotowanie do egzaminu ósmoklasisty</li>
+                <li>Przygotowanie do bieżącego materiału szkolnego</li>
+              </ul>
+
+              <h3 className="text-lg font-semibold mt-6">Metody nauczania:</h3>
+              <ul className="list-disc list-inside text-gray-700 ml-4">
+               <li>Tworzenie indywidualnych wyzwań dopasowanych do ucznia</li>
+                <li>Łączenie teorii z praktycznymi i ciekawymi przykładami</li>
+                <li>Dopasowanie zajęć do tempa i zainteresowań ucznia</li>
+              </ul>
+            </div>
           </div>
         </div>
       )}

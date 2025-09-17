@@ -36,7 +36,7 @@ const Subscribe = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         style={bgStyle}
-        className="w-full py-24 md:py-48 relative rounded-3xl shadow-2xl"
+        className="w-full py-24 md:py-48 relative rounded-3xl shadow-2xl md:rounded-none md:shadow-none"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
@@ -52,7 +52,7 @@ const Subscribe = () => {
               Zaufalo nam już wielu mlodych i ambitnych uczniów, dołącz do nich i Ty!
             </p>
             <a
-              href=""
+              href="#home"
               className="primary-btn !mt-8 inline-flex items-center gap-4 group "
             >
               Dolacz teraz
