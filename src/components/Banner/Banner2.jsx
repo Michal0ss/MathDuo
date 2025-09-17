@@ -22,12 +22,12 @@ const Banner2 = () => {
 
   const teachers = {
     instagram: [
-      { name: "Michał", subject: "Matematyka", profileUrl: "https://instagram.com/michal_instagram", icon: <FaInstagram className="text-xl" />, bgColor: "bg-pink-500 hover:bg-pink-600", photo: MichalPhoto },
-      { name: "Dawid", subject: "Matematyka", profileUrl: "https://instagram.com/dawid_instagram", icon: <FaInstagram className="text-xl" />, bgColor: "bg-pink-500 hover:bg-pink-600", photo: DawidPhoto }
+      { name: "Michał", subject: "Matematyka", profileUrl: "https://www.instagram.com/michal.bialas_", icon: <FaInstagram className="text-xl" />, bgColor: "bg-pink-500 hover:bg-pink-600", photo: MichalPhoto },
+      { name: "Dawid", subject: "Matematyka", profileUrl: "https://www.instagram.com/dawidchrzaszcz/", icon: <FaInstagram className="text-xl" />, bgColor: "bg-pink-500 hover:bg-pink-600", photo: DawidPhoto }
     ],
     facebook: [
-      { name: "Michał", subject: "Matematyka", profileUrl: "https://facebook.com/michal_facebook", icon: <FaFacebook className="text-xl" />, bgColor: "bg-blue-600 hover:bg-blue-700", photo: MichalPhoto },
-      { name: "Dawid", subject: "Matematyka", profileUrl: "https://facebook.com/dawid_facebook", icon: <FaFacebook className="text-xl" />, bgColor: "bg-blue-600 hover:bg-blue-700", photo: DawidPhoto }
+      { name: "Michał", subject: "Matematyka", profileUrl: "https://www.facebook.com/bialy.mnich", icon: <FaFacebook className="text-xl" />, bgColor: "bg-blue-600 hover:bg-blue-700", photo: MichalPhoto },
+      { name: "Dawid", subject: "Matematyka", profileUrl: "https://www.facebook.com/profile.php?id=100014540770507", icon: <FaFacebook className="text-xl" />, bgColor: "bg-blue-600 hover:bg-blue-700", photo: DawidPhoto }
     ],
     contact: [
       { name: "Michał", phone: "+48 884 843 004", photo: MichalPhoto },
