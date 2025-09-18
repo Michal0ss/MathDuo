@@ -43,7 +43,7 @@ const Banner = () => {
           trigger: bookArea,
           start: "top 90%",
           end: "bottom 10%",
-          scrub: true,
+          scrub: 1,
           invalidateOnRefresh: true, // dodane!
         },
       });
