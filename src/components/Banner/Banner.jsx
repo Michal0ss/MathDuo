@@ -6,7 +6,7 @@ import { FadeUp } from "../Hero/Hero";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./math-books-animation.css";
+import "./math_books_animations.css";
 import book1 from "../../assets/grafika_no_bg.png";
 
 gsap.registerPlugin(ScrollTrigger);
