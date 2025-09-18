@@ -1,38 +1,39 @@
-# MathDuo – Platforma Korepetycji Matematycznych
+# MathDuo – Math Tutoring Platform
 
-MathDuo to nowoczesna aplikacja webowa stworzona w **React**, która umożliwia łatwe umawianie korepetycji matematycznych, prezentację oferty oraz kontakt z zespołem.  
-Projekt powstał we współpracy z moim wspólnikiem z branży korepetycji, aby zapewnić uczniom i rodzicom wygodny dostęp do profesjonalnej pomocy matematycznej.
-
----
-
-## 🛠 Technologie i zagadnienia, które rozwinąłem
-
-Podczas pracy nad **MathDuo** rozwinąłem swoje umiejętności w zakresie:
-
-- **React**: komponenty funkcyjne, hooki (`useState`, `useEffect`, `useRef`), zarządzanie stanem, propsy, renderowanie warunkowe  
-- **React Router**: nawigacja między stronami *(jeśli używasz)*  
-- **GSAP & ScrollTrigger**: zaawansowane animacje, płynne przewijanie, integracja z React przez `@gsap/react`  
-- **Responsywność**: projektowanie interfejsu na różne urządzenia, media queries, dynamiczne style  
-- **Praca z danymi**: import plików JSON, dynamiczne wyświetlanie terminów zajęć  
-- **Współpraca zespołowa**: komunikacja, podział zadań, wspólne planowanie funkcjonalności  
-- **Vite**: szybkie środowisko deweloperskie dla Reacta  
+MathDuo is a modern web application built with **React**, designed to make scheduling math tutoring sessions, presenting the offer, and contacting the team simple and convenient.  
+The project was developed in collaboration with my business partner in the tutoring field to provide students and parents with easy access to professional math support.
 
 ---
 
-## 👥 Współpraca
+## 🛠 Technologies and Skills Developed
 
-Projekt powstał we współpracy z moim wspólnikiem z branży korepetycji matematycznych.  
-Wspólnie analizowaliśmy potrzeby uczniów, projektowaliśmy funkcjonalności oraz testowaliśmy rozwiązania, aby aplikacja była jak najbardziej przyjazna i funkcjonalna.
+While working on **MathDuo**, I improved my skills in the following areas:
 
+- **React**: functional components, hooks (`useState`, `useEffect`, `useRef`), state management, props, conditional rendering  
+- **React Router**: navigation between pages *(if used)*  
+- **GSAP & ScrollTrigger**: advanced animations, smooth scrolling, React integration via `@gsap/react`  
+- **Responsiveness**: designing interfaces for different devices, media queries, dynamic styles  
+- **Working with data**: importing JSON files, dynamically displaying available tutoring slots  
+- **Team collaboration**: communication, task distribution, joint planning of functionalities  
+- **Vite**: fast development environment for React  
 
 ---
 
-## ⚙️ Jak uruchomić projekt na swoim urządzeniu?
-1. **Pobierz repozytorium**
-   ```bash git clone <adres-repozytorium>  cd mathduo ``` 
-2. **Zainstaluj zależności**
+## 👥 Collaboration
+
+The project was developed in cooperation with my business partner from the math tutoring industry.  
+Together, we analyzed the needs of students, designed functionalities, and tested solutions to make the application as user-friendly and functional as possible.
+
+---
+
+## ⚙️ How to Run the Project Locally
+
+1. **Clone the repository**
+   ```bash git clone <repository-url> cd mathduo```
+2. **Install dependencies**
     ```bash npm install ```
-3. **Zainstaluj zależności**
+3. **Start the development server**
     ```bash npm run dev ```
-    Aplikacja będzie dostępna pod adresem http://localhost:5173 (lub innym wskazanym przez Vite).
-
+The application will be available at:
+👉 http://localhost:5173
+ (or another port specified by Vite).
