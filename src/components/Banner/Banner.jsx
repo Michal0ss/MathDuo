@@ -39,13 +39,11 @@ const Banner = () => {
       gsap.to(book, {
         x: moveX > 0 ? moveX : 0,
         ease: "none",
-        force3D: true, // poprawa płynności na mobile
         scrollTrigger: {
           trigger: bookArea,
           start: "top 90%",
           end: "bottom 10%",
           scrub: 2, // możesz zwiększyć do 3 dla jeszcze większej płynności
-          anticipatePin: 1, // lepsza synchronizacja przy szybkim scrollu
           invalidateOnRefresh: true,
         },
       });
@@ -82,7 +80,7 @@ const Banner = () => {
           className="flex justify-center items-center"
           style={{
             position: "relative",
-            minHeight: isMobile ? "220px" : "180px", // większa wysokość na mobile
+            minHeight: isMobile ? "170px" : "180px", // większa wysokość na mobile
             overflow: "hidden",
             willChange: "transform", 
           }}
