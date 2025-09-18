@@ -39,13 +39,14 @@ const Banner = () => {
       gsap.to(book, {
         x: moveX > 0 ? moveX : 0,
         ease: "none",
+        force3D: true, // poprawa płynności na mobile
         scrollTrigger: {
           trigger: bookArea,
           start: "top 90%",
           end: "bottom 10%",
-          scrub: 2, // dużo płynniejsze!
+          scrub: 2, // możesz zwiększyć do 3 dla jeszcze większej płynności
+          anticipatePin: 1, // lepsza synchronizacja przy szybkim scrollu
           invalidateOnRefresh: true,
-          // smooth: true, // jeśli masz GSAP 3.12+
         },
       });
     }, bookArea);
