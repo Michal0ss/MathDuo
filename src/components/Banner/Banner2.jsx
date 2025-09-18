@@ -36,7 +36,7 @@ const Banner2 = () => {
   };
 
   return (
-    <section className="relative">
+    <section id="contact-section" className="relative">
       {/* Overlay */}
       <AnimatePresence>
         {socialModal.isOpen && (
