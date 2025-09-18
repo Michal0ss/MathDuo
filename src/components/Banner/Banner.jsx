@@ -1,75 +1,59 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { GrUserExpert } from "react-icons/gr";
 import { MdOutlineAccessTime } from "react-icons/md";
 import { FaBookReader } from "react-icons/fa";
 import { FadeUp } from "../Hero/Hero";
 import { motion } from "framer-motion";
-import { gsap } from "gsap";
+import {gsap} from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import "./math_books_animations.css";
 import book1 from "../../assets/grafika_no_bg.png";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Banner = () => {
-  const sectionRef = useRef(null);
   const bookAreaRef = useRef(null);
-  const bookRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      ScrollTrigger.refresh(); // wymusza przeliczenie triggerów
-    };
+  // Responsywność
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const runGsapAnimation = () => {
-    const bookArea = bookAreaRef.current;
-    const book = bookRef.current;
-    if (!bookArea || !book) return;
+  useGSAP(
+    () => {
+      const books = gsap.utils.toArray(".book-img");
+      books.forEach((book) => {
+        const area = bookAreaRef.current;
+        const moveX = area.offsetWidth - book.offsetWidth;
 
-    gsap.set(book, { x: 0 });
+        gsap.set(book, { x: 0 });
 
-    let ctx = gsap.context(() => {
-      const moveX = bookArea.offsetWidth - book.offsetWidth;
-
-      gsap.to(book, {
-        x: moveX > 0 ? moveX : 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: bookArea,
-          start: "top 90%",
-          end: "bottom 10%",
-          scrub: 2, // możesz zwiększyć do 3 dla jeszcze większej płynności
-        },
+        gsap.to(book, {
+          x: moveX > 0 ? moveX : 0,
+          ease: "none",
+          force3D: true,
+          scrollTrigger: {
+            trigger: area,
+            start: "top 90%",
+            end: "bottom 10%",
+            scrub: isMobile ? 2.5 : 1.5, // płynniej na telefonie
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
       });
-    }, bookArea);
-
-    return ctx;
-  };
-
-  useEffect(() => {
-    let ctx;
-    const book = bookRef.current;
-    if (book && book.complete) {
-      ctx = runGsapAnimation();
-    }
-    return () => ctx && ctx.revert();
-  }, [isMobile]);
-
-  const handleImgLoad = () => {
-    runGsapAnimation();
-    ScrollTrigger.refresh(); // wymusza przeliczenie triggerów po załadowaniu obrazka
-  };
+    },
+    { dependencies: [isMobile], scope: bookAreaRef }
+  );
 
   return (
     <section>
       <div
         id="info"
-        ref={sectionRef}
         className="container py-1 md:py-24 pb-12 md:pb-20 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 space-y-2 md:space-y-0"
         style={{ position: "relative", minHeight: "220px" }}
       >
@@ -79,23 +63,19 @@ const Banner = () => {
           className="flex justify-center items-center"
           style={{
             position: "relative",
-            minHeight: isMobile ? "170px" : "180px", // większa wysokość na mobile
+            minHeight: isMobile ? "170px" : "180px",
             overflow: "hidden",
-            willChange: "transform", 
+            willChange: "transform",
           }}
         >
           <img
-            ref={bookRef}
+            className="book-img"
             src={book1}
             alt="Książka matematyczna"
-            onLoad={handleImgLoad}
             style={{
-              width: isMobile ? "140px" : "350px", // mniejsza szerokość na mobile
+              width: isMobile ? "140px" : "350px",
               height: "auto",
-              position: "absolute",
-              left: 0,
-              top: "50%",
-              transform: "translateY(-50%)",
+              position: "relative", // tylko relative!
               willChange: "transform",
               zIndex: 2,
             }}
@@ -122,7 +102,9 @@ const Banner = () => {
                 className="flex items-center gap-4 p-6 bg-[#f4f4f4] rounded-2xl hover:bg-white duration-300 hover:shadow-2xl"
               >
                 <FaBookReader className="text-2xl" />
-                <p className="text-lg">Korepetycje prywatne lub grupowe z doświadczonymi korepetytorami</p>
+                <p className="text-lg">
+                  Korepetycje prywatne lub grupowe z doświadczonymi korepetytorami
+                </p>
               </motion.div>
               <motion.div
                 variants={FadeUp(0.4)}
