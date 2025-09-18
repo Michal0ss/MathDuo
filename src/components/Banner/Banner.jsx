@@ -43,8 +43,9 @@ const Banner = () => {
           trigger: bookArea,
           start: "top 90%",
           end: "bottom 10%",
-          scrub: 1,
-          invalidateOnRefresh: true, // dodane!
+          scrub: 2, // dużo płynniejsze!
+          invalidateOnRefresh: true,
+          // smooth: true, // jeśli masz GSAP 3.12+
         },
       });
     }, bookArea);
@@ -82,6 +83,7 @@ const Banner = () => {
             position: "relative",
             minHeight: isMobile ? "220px" : "180px", // większa wysokość na mobile
             overflow: "hidden",
+            willChange: "transform", 
           }}
         >
           <img
