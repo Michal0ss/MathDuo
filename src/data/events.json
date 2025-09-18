@@ -1,32 +1,36 @@
 {
   "events": [
     {
-      "title": "Dostępny termin",
-      "start": "2025-09-18T16:00:00",
-      "end": "2025-09-18T18:00:00",
-      "number": "+48884843004"
-    },
-    {
-      "title": "Dostępny termin",
-      "start": "2025-09-18T16:00:00", 
-      "end": "2025-09-18T18:00:00"
-    },
-    {
+      "id"  : "indywidualne",
       "title": "Korepetycje Dawid",
       "start": "2025-09-19T15:00:00",
       "end": "2025-09-19T16:30:00",
-      "number": "+48884843004"
+      "number": "+48 517 431 322"
     },
     {
+      "id"  : "indywidualne",
       "title": "Korepetycje Michal",
       "start": "2025-09-20T10:00:00",
       "end": "2025-09-20T12:00:00",
-      "number": "+48884843004"
+      "number": "+48 884 843 004"
     },
     {
+      "id"  : "grupa",
       "title": "Korepetycje GRUPA 1 - przygotowanie do matury P",
       "start": "2025-09-21T14:00:00",
       "end": "2025-09-21T16:00:00"
+    },
+    {
+      "id"  : "grupa",
+      "title": "Korepetycje GRUPA 2 - przygotowanie do matury R",
+      "start": "2025-09-22T14:00:00",
+      "end": "2025-09-22T16:00:00"
+    },
+    {
+      "id"  : "para",
+      "title": "Korepetycje PARA - Ania i Ola",
+      "start": "2025-09-23T11:00:00",
+      "end": "2025-09-23T12:30:00"
     }
   ]
 }

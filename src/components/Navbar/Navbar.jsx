@@ -10,7 +10,8 @@ const NavbarMenu = [
 	{ id: 2, title: "Usługi", path: "#services" },
 	{ id: 3, title: "O nas", path: "#info" },
 	{ id: 4, title: "Nasi uczniowie", path: "#team" },
-	{ id: 5, title: "Kontakt", path: "#contact-section" },
+	{ id: 5, title: "Cennik", path: "#pricing" },
+	{ id: 6, title: "Kontakt", path: "#contact-section" },
 ];
 
 const Navbar = () => {

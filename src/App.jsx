@@ -5,18 +5,20 @@ import Banner from "./components/Banner/Banner";
 import Subscribe from "./components/Subscribe/Subscribe";
 import Banner2 from "./components/Banner/Banner2";
 import Footer from "./components/Footer/Footer";
+import Price from "./components/Price/Price";
 
-const App = () => {
+function App() {
   return (
     <main className="overflow-x-hidden bg-white text-dark">
       <Hero />
       <Services />
       <Banner />
       <Subscribe />
+      <Price />
       <Banner2 />
       <Footer />
     </main>
   );
-};
+}
 
 export default App;
