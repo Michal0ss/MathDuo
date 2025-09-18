@@ -44,7 +44,6 @@ const Banner = () => {
           start: "top 90%",
           end: "bottom 10%",
           scrub: 2, // możesz zwiększyć do 3 dla jeszcze większej płynności
-          invalidateOnRefresh: true,
         },
       });
     }, bookArea);
