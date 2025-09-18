@@ -18,12 +18,15 @@ const Banner = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      ScrollTrigger.refresh(); // wymusza przeliczenie triggerów
+    };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
+  const runGsapAnimation = () => {
     const bookArea = bookAreaRef.current;
     const book = bookRef.current;
     if (!bookArea || !book) return;
@@ -31,7 +34,6 @@ const Banner = () => {
     gsap.set(book, { x: 0 });
 
     let ctx = gsap.context(() => {
-      // Przesuwamy tylko w obrębie kontenera z książką
       const moveX = bookArea.offsetWidth - book.offsetWidth;
 
       gsap.to(book, {
@@ -42,12 +44,27 @@ const Banner = () => {
           start: "top 90%",
           end: "bottom 10%",
           scrub: true,
+          invalidateOnRefresh: true, // dodane!
         },
       });
     }, bookArea);
 
-    return () => ctx.revert();
+    return ctx;
+  };
+
+  useEffect(() => {
+    let ctx;
+    const book = bookRef.current;
+    if (book && book.complete) {
+      ctx = runGsapAnimation();
+    }
+    return () => ctx && ctx.revert();
   }, [isMobile]);
+
+  const handleImgLoad = () => {
+    runGsapAnimation();
+    ScrollTrigger.refresh(); // wymusza przeliczenie triggerów po załadowaniu obrazka
+  };
 
   return (
     <section>
@@ -63,16 +80,17 @@ const Banner = () => {
           className="flex justify-center items-center"
           style={{
             position: "relative",
-            minHeight: "180px",
-            overflow: "hidden", // ogranicza ruch książki do tego obszaru
+            minHeight: isMobile ? "220px" : "180px", // większa wysokość na mobile
+            overflow: "hidden",
           }}
         >
           <img
             ref={bookRef}
             src={book1}
             alt="Książka matematyczna"
+            onLoad={handleImgLoad}
             style={{
-              width: isMobile ? "190px" : "350px",
+              width: isMobile ? "140px" : "350px", // mniejsza szerokość na mobile
               height: "auto",
               position: "absolute",
               left: 0,
