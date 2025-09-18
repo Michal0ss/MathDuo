@@ -19,6 +19,14 @@ While working on **MathDuo**, I improved my skills in the following areas:
 
 ---
 
+## In the near future
+I plan to extend the platform with features such as:
+- User authentication and login – allowing students and parents to create accounts
+- Subject enrollment directly from the website – enabling users to sign up for tutoring sessions online
+- Notifications for teacher
+
+---
+
 ## 👥 Collaboration
 
 The project was developed in cooperation with my business partner from the math tutoring industry.  
