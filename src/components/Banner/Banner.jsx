@@ -30,7 +30,7 @@ const Banner = () => {
         const area = bookAreaRef.current;
         const moveX = area.offsetWidth - book.offsetWidth;
 
-        gsap.set(book, { x: 0 });
+        gsap.set(book, { x: -20 });
 
         gsap.to(book, {
           x: moveX > 0 ? moveX : 0,
