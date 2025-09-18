@@ -156,12 +156,12 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7, ease: "easeInOut" }}
             >
-              <button
-                onClick={() => setShowAboutM(true)}
-                className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
-              >
-                O mnie
-              </button>
+<button
+  onClick={() => setShowAboutM(true)}
+  className="mt-4 px-6 py-2 bg-primary text-white rounded-lg transition-colors duration-300 hover:bg-secondary"
+>
+  O mnie
+</button>
             </motion.div>
           </div>
           
@@ -180,11 +180,12 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.8, ease: "easeInOut" }}
             >
               <button
-                onClick={() => setShowAboutC(true)}
-                className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
-              >
-                O mnie
-              </button>
+  onClick={() => setShowAboutC(true)}
+  className="mt-4 px-6 py-2 bg-primary text-white rounded-lg transition-colors duration-300 hover:bg-secondary"
+>
+  O mnie
+</button>
+
             </motion.div>
           </div>
           
