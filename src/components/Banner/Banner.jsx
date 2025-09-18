@@ -1,28 +1,89 @@
-import React from "react";
-import BannerPng from "../../assets/grafika_no_bg.png";
+import React, { useEffect, useRef, useState } from "react";
 import { GrUserExpert } from "react-icons/gr";
 import { MdOutlineAccessTime } from "react-icons/md";
 import { FaBookReader } from "react-icons/fa";
 import { FadeUp } from "../Hero/Hero";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./math-books-animation.css";
+import book1 from "../../assets/grafika_no_bg.png";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Banner = () => {
+  const sectionRef = useRef(null);
+  const bookAreaRef = useRef(null);
+  const bookRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const bookArea = bookAreaRef.current;
+    const book = bookRef.current;
+    if (!bookArea || !book) return;
+
+    gsap.set(book, { x: 0 });
+
+    let ctx = gsap.context(() => {
+      // Przesuwamy tylko w obrębie kontenera z książką
+      const moveX = bookArea.offsetWidth - book.offsetWidth;
+
+      gsap.to(book, {
+        x: moveX > 0 ? moveX : 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: bookArea,
+          start: "top 90%",
+          end: "bottom 10%",
+          scrub: true,
+        },
+      });
+    }, bookArea);
+
+    return () => ctx.revert();
+  }, [isMobile]);
+
   return (
     <section>
-      <div id = "info" className="container py-1 md:py-24 pb-12 md:pb-20 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 space-y-2 md:space-y-0">
-        {/* Banner Image */}
-        <div className="flex justify-center items-center">
-          <motion.img
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            src={BannerPng}
-            alt=""
-            className="w-[300px] md:max-w-[450px] object-cover drop-shadow"
+      <div
+        id="info"
+        ref={sectionRef}
+        className="container py-1 md:py-24 pb-12 md:pb-20 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 space-y-2 md:space-y-0"
+        style={{ position: "relative", minHeight: "220px" }}
+      >
+        {/* Sekcja z animowaną książką */}
+        <div
+          ref={bookAreaRef}
+          className="flex justify-center items-center"
+          style={{
+            position: "relative",
+            minHeight: "180px",
+            overflow: "hidden", // ogranicza ruch książki do tego obszaru
+          }}
+        >
+          <img
+            ref={bookRef}
+            src={book1}
+            alt="Książka matematyczna"
+            style={{
+              width: isMobile ? "190px" : "350px",
+              height: "auto",
+              position: "absolute",
+              left: 0,
+              top: "50%",
+              transform: "translateY(-50%)",
+              willChange: "transform",
+              zIndex: 2,
+            }}
           />
         </div>
-        {/* Banner Text */}
+        {/* Tekst banera */}
         <div className="flex flex-col justify-center">
           <div className="text-center md:text-left space-y-8 md:space-y-12">
             <motion.h1
