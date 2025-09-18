@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import eventsData from "../../data/events.json"; // <-- import JSON!
 
 const plans = [
 	{
@@ -40,34 +41,14 @@ const plans = [
 	},
 ];
 
-import { useState } from "react";
-
 const Price = () => {
-	const [events, setEvents] = useState([]);
 	const [selectedEvents, setSelectedEvents] = useState([]);
 	const [showModal, setShowModal] = useState(false);
 	const [modalTitle, setModalTitle] = useState("");
 
-	// Wczytaj events.json przy pierwszym kliknięciu
-	const fetchEvents = async () => {
-		if (events.length === 0) {
-			try {
-				const response = await fetch("/src/data/events.json");
-				const data = await response.json();
-				setEvents(data.events);
-				return data.events;
-			} catch (error) {
-				console.error("Błąd ładowania events.json:", error);
-				return [];
-			}
-		}
-		return events;
-	};
-
 	// Obsługa kliknięcia przycisku
-	const handleClick = async (planId, planTitle) => {
-		const allEvents = await fetchEvents();
-		const filtered = allEvents.filter((event) => event.id === planId);
+	const handleClick = (planId, planTitle) => {
+		const filtered = eventsData.events.filter((event) => event.id === planId);
 		setSelectedEvents(filtered);
 		setModalTitle(planTitle);
 		setShowModal(true);
