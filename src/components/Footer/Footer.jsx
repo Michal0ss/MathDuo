@@ -3,10 +3,11 @@ import { FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { TbWorldWww } from "react-icons/tb";
 import { motion } from "framer-motion";
 import { FaDiscord, FaFacebook } from "react-icons/fa6";
+import logo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer  id = "contact" className="py-28 bg-[#f7f7f7]">
+    <footer  id = "contact" className="py-5 bg-[#f7f7f7]">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -15,6 +16,13 @@ const Footer = () => {
         <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-4">
           {/* first section */}
           <div className="space-y-4 max-w-[300px]">
+            <div className="flex justify-start mb-2">
+              <img 
+                src={logo} 
+                alt="MathDuo Logo" 
+                className="w-28 h-28 object-contain" 
+              />
+            </div>
             <h1 className="text-2xl font-bold">The MathDuo</h1>
             <p className="text-dark2">
               	Pomagamy uczniom zrozumieć matematykę krok po kroku. Oferujemy
