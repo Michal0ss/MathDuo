@@ -36,7 +36,7 @@ const Banner2 = () => {
   };
 
   return (
-    <section id="contact-section" className="relative">
+    <section id="contact-section" className="relative overflow-x-hidden">
       {/* Overlay */}
       <AnimatePresence>
         {socialModal.isOpen && (
@@ -113,7 +113,7 @@ const Banner2 = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex flex-col justify-center text-center md:text-left">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col justify-center text-center md:text-left">
             <div className="space-y-4 md:max-w-[450px]">
               <p className="text-dark2 font-bold">
                 Możemy pomóc Ci z matematyką zdalnie przez internet jak i zarówno na terenie Krakowa (Krowodrza, Łobzów i okolice Błoni), Radzionkowa i okolic. Korzystając z naszych korepetycji, zyskujesz elastyczność i wygodę nauki w dogodnym dla Ciebie miejscu.
@@ -139,7 +139,7 @@ const Banner2 = () => {
           </motion.div>
 
           {/* MAPY */}
-          <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5122.350502272018!2d19.911434!3d50.069225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b1b8b7b8b8b%3A0x8b7b8b7b8b7b8b8b!2sKrowodrza%2C%20Krak%C3%B3w!5e0!3m2!1spl!2spl!4v1727100000000!5m2!1spl!2spl"
               className="w-full h-[200px] md:h-[250px] rounded-lg shadow-lg"

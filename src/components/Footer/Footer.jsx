@@ -7,7 +7,7 @@ import logo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer  id = "contact" className="py-5 bg-[#f7f7f7]">
+    <footer  id = "contact" className="py-5 bg-[#f7f7f7] overflow-x-hidden">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ const Footer = () => {
             <div className="space-y-4">
               <h1 className="text-2xl font-bold">Mail</h1>
               <div className="text-dark2">
-                <ul className="space-y-2 text-lg">
+                <ul className="space-y-2 text-lg break-words">
                   <li className="cursor-pointer hover:text-secondary duration-200">
                     dawidchrzaszcz64@gmail.com
                   </li>
@@ -72,13 +72,13 @@ const Footer = () => {
           {/* third section */}
           <div className="space-y-4 max-w-[300px] md:ml-auto">
             <h1 className="text-2xl font-bold">Skontaktuj sie z nami</h1>
-            <div className="flex items-center">
+            <div className="flex items-center overflow-x-hidden">
               <input
                 type="text"
                 placeholder="Podaj email"
-                className="p-3 rounded-s-xl bg-white w-full py-4 focus:ring-0 focus:outline-none placeholder:text-dark2"
+                className="p-3 rounded-s-xl bg-white flex-1 min-w-0 py-4 focus:ring-0 focus:outline-none placeholder:text-dark2"
               />
-              <button className="bg-primary text-white font-semibold py-4 px-6 rounded-e-xl">
+              <button className="bg-primary text-white font-semibold py-4 px-6 rounded-e-xl shrink-0">
                 OK 
               </button>
             </div>
