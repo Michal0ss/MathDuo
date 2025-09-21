@@ -150,7 +150,7 @@ const Subscribe = () => {
             </p>
             <a
               href="#home"
-              className="primary-btn !mt-8 inline-flex items-center gap-4 group bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg transition-colors duration-200"
+              className=" !mt-8 inline-flex items-center gap-4 group bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg transition-colors duration-200"
             >
               Dolacz teraz
               <FaBell className="group-hover:animate-bounce group-hover:text-lg duration-200" />
